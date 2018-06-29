@@ -1,3 +1,5 @@
-src
-docs
-test
+**/*
+!dist/**/*.js
+!dist/**/*.js.map
+!package.json
+!README.md

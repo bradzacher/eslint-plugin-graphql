@@ -3,7 +3,6 @@ import { RuleTester } from 'eslint';
 import schemaJson from './schema.json';
 import path from 'path';
 import {
-  includes,
   values,
   entries,
 } from 'lodash';
@@ -1019,7 +1018,7 @@ const noDeprecatedFieldsCases = {
     }];
     const otherValidators = (
       entries(validatorCases)
-        .filter(([otherValidatorName, {alsoBreaks}]) => otherValidatorName !== validatorName && !includes((alsoBreaks || []), validatorName))
+        .filter(([otherValidatorName, {alsoBreaks}]) => otherValidatorName !== validatorName && !(alsoBreaks || []).includes(validatorName))
         .map(([name, testCases]) => testCases)
     );
     ruleTester.run(`enabled only ${validatorName} validator`, rule, {

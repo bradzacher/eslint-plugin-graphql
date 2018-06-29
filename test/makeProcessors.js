@@ -1,6 +1,5 @@
 import assert from 'assert';
 import { CLIEngine } from 'eslint';
-import { includes, keys } from 'lodash';
 import path from 'path';
 
 import schemaJson from './schema.json';
@@ -36,10 +35,10 @@ function execute(file) {
 
 describe('processors', () => {
   it('should define processors', () => {
-    const extensions = keys(processors);
+    const extensions = Object.keys(processors);
 
-    assert(includes(extensions, '.gql'));
-    assert(includes(extensions, '.graphql'));
+    assert(extensions.includes('.gql'));
+    assert(extensions.includes('.graphql'));
   });
 
   it('should wrap with backticks, escape properly and prepend internalTag', () => {
